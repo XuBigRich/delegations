@@ -5,23 +5,31 @@ import cn.piao888.middleware2.Middleware2Application;
 import cn.piao888.support.service.Person;
 import cn.piao888.support.service.PersonImpl;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * 双亲委派机制的学习
  * middleware1 与 middleware2 分别依赖于support 0.0.1 与 support 0.0.2
  * support 0.0.1 与 support 0.0.2 区别在于PersonImpl 类是否存在singe 方法
- *
+ * <p>
  * 第一步：
- *  分别将support 0.0.1 与 support 0.0.2 打包 安装   (放入.m2仓库)
+ * 分别将support 0.0.1 与 support 0.0.2 打包 安装   (放入.m2仓库)
  * 第二步：
- *  分别将 middleware1 与 middleware2 打包 安装  (放入.m2仓库)
+ * 分别将 middleware1 与 middleware2 打包 安装  (放入.m2仓库)
  * 第三步：
- *  执行命令
- *   java -classpath /Users/xuhongzhi/Workspacess/delegation/platform/target/classes:/Users/xuhongzhi/.m2/repository/cn/piao888/middleware1/0.0.1-SNAPSHOT/middleware1-0.0.1-SNAPSHOT.jar:/Users/xuhongzhi/.m2/repository/cn/piao888/support/0.0.1-SNAPSHOT/support-0.0.1-SNAPSHOT.jar:/Users/xuhongzhi/.m2/repository/cn/piao888/support/0.0.2-SNAPSHOT/support-0.0.2-SNAPSHOT.jar:/Users/xuhongzhi/.m2/repository/cn/piao888/middleware2/0.0.1-SNAPSHOT/middleware2-0.0.1-SNAPSHOT.jar cn.piao888.platform.PlatformApplication
- *
- *  控制台将打印：
+ * 执行命令
+ * java -classpath /Users/xuhongzhi/Workspacess/delegation/platform/target/classes:/Users/xuhongzhi/.m2/repository/cn/piao888/middleware1/0.0.1-SNAPSHOT/middleware1-0.0.1-SNAPSHOT.jar:/Users/xuhongzhi/.m2/repository/cn/piao888/support/0.0.1-SNAPSHOT/support-0.0.1-SNAPSHOT.jar:/Users/xuhongzhi/.m2/repository/cn/piao888/support/0.0.2-SNAPSHOT/support-0.0.2-SNAPSHOT.jar:/Users/xuhongzhi/.m2/repository/cn/piao888/middleware2/0.0.1-SNAPSHOT/middleware2-0.0.1-SNAPSHOT.jar cn.piao888.platform.PlatformApplication
+ * <p>
+ * 控制台将打印：
  * sun.misc.Launcher$AppClassLoader@73d16e93
  * 我是说界巨星
  * cn.piao888.middleware1.classLoader.CustomClassLoader@45ee12a7
@@ -29,17 +37,16 @@ import java.net.MalformedURLException;
  * 我是唱界巨星
  * cn.piao888.middleware2.classLoader.CustomClassLoader@d716361
  * 我是说界巨星
- *
+ * <p>
  * 之所以jvm可以同时加载两个相同的cn.piao888.support.service.PersonImpl (不同版本)
  * 是因为 middleware1 与 middleware2 同时拥有平级的类加载器 然后他们分别将两个不同版本的PersonImpl装载进了jvm中
- *
- *
  */
 public class PlatformApplication {
 
-    public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, MalformedURLException, InstantiationException, IllegalAccessException {
-        Person person=new PersonImpl();
-        person.say();
+    public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, IOException, InstantiationException, IllegalAccessException {
+
+        Person person = new PersonImpl();
+//        person.getProperties();
         Middleware1Application.main(new String[]{"1", "2"});
         Middleware2Application.main(new String[]{"1", "2"});
     }

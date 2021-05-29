@@ -1,5 +1,8 @@
 package cn.piao888.support.service;
 
+import java.io.IOException;
+import java.util.List;
+
 /**
  * @Author： hongzhi.xu
  * @Date: 2021/5/21 上午6:48
@@ -12,5 +15,5 @@ public interface Person {
     //唱
 //    void singe();
 
-
+    void getProperties() throws IOException;
 }
