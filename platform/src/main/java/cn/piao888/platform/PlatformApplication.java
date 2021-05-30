@@ -45,7 +45,7 @@ public class PlatformApplication {
 
     public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, IOException, InstantiationException, IllegalAccessException {
 
-        Person person = new PersonImpl();
+//        Person person = new PersonImpl();
 //        person.getProperties();
         Middleware1Application.main(new String[]{"1", "2"});
         Middleware2Application.main(new String[]{"1", "2"});

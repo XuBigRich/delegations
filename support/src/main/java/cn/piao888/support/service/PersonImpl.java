@@ -18,6 +18,12 @@ public class PersonImpl implements Person {
     {
         ClassLoader classLoader = this.getClass().getClassLoader();
         System.out.println(classLoader);
+        try {
+            //不同类加载器执行这个方法时会得到不一样的输出
+            getProperties();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -25,10 +31,10 @@ public class PersonImpl implements Person {
         System.out.println("我是说界巨星");
     }
 
-    //        @Override
-//    public void singe() {
-//        System.out.println("我是唱界巨星");
-//    }
+            @Override
+    public void singe() {
+        System.out.println("我是唱界巨星");
+    }
 //将URL路径下的配置文件转换为Properties对象
     private Properties getProperties(URL url) throws IOException {
         InputStream inputStream = url.openStream();
@@ -41,7 +47,9 @@ public class PersonImpl implements Person {
     @Override
     public void getProperties() throws IOException {
         List<String> results = new ArrayList<String>();
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        //使用上下文加载器 加载
+//        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        ClassLoader classLoader = this.getClass().getClassLoader();
         Enumeration<URL> urls = classLoader.getResources("application.properties");
         while (urls.hasMoreElements()) {
             URL url = urls.nextElement();

@@ -13,7 +13,7 @@ public interface Person {
     void say();
 
     //唱
-//    void singe();
+    void singe();
 
     void getProperties() throws IOException;
 }
