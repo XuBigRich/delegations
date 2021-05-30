@@ -32,6 +32,8 @@
   此时在target目录下生成了middleware-1.0.jar
   
   middleware-2.0.jar 修改Java文件后 执行相同的命令可得到
+  运行这个jar包
+   java -classpath ../../support/target/support-1.0.jar -jar middleware-1.0.jar
   
   
   #双亲委派机制
