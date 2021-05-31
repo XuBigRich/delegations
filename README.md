@@ -22,20 +22,29 @@
   
   -- 制作middleware1 （中间件1）与middleware2 （中间件2）的jar包   （中间件会依赖support包，所以编译时需要cp引入依赖）
   
+  --制作middleware1
+
   首先执行编译 参数 cp 指向项目依赖的support的jar包所在位置
-  javac -cp ../support/target/support-2.0.jar -d target src/main/java/cn/piao888/middleware1/*.java src/main/java/cn/piao888/middleware1/classLoader/*.java 
-  
+  编译：javac -encoding UTF-8 -cp ../support/target/support-0.0.1-SNAPSHOT.jar  -d target src/main/java/cn/piao888/middleware1/*.java src/main/java/cn/piao888/middleware1/classLoader/*.java
   通过上个命令源码会出现在middleware的target目录下
   
   然后进入 target目录 将target目录下的字节码执行下面的命令变为一个名为middleware-1.0.jar的jar包
-  jar -cvf support-1.0.jar cn
+  打包:jar -cvf middleware-1.0.jar cn
   此时在target目录下生成了middleware-1.0.jar
   
+  添加Main-Class: Main-Class: cn.piao888.middleware1.Middleware1Application
+
   middleware-2.0.jar 修改Java文件后 执行相同的命令可得到
   运行这个jar包
-   java -classpath ../../support/target/support-1.0.jar -jar middleware-1.0.jar
+   java -jar middleware-1.0.jar
   
-  
+  --制作middleware2
+  编译：javac -encoding UTF-8 -cp ../support/target/support-0.0.2-SNAPSHOT.jar  -d target src/main/java/cn/piao888/middleware2/*.java src/main/java/cn/piao888/middleware2/classLoader/*.java
+  进入target目录：cd target
+  打包： jar -cvf middleware-2.0.jar cn
+  添加Main-Class: Main-Class: cn.piao888.middleware2.Middleware2Application
+  执行: java -jar middleware-2.0.jar
+
   #双亲委派机制
   middleware1 与 middleware2 分别依赖于support 0.0.1 与 support 0.0.2
   support 0.0.1 与 support 0.0.2 区别在于PersonImpl 类是否存在singe 方法
