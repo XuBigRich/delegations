@@ -43,11 +43,11 @@
   middleware1 与 middleware2 分别依赖于support-0.0.1-SNAPSHOT 与 support-0.0.1-SNAPSHOT
   support 0.0.1 与 support 0.0.2 区别在于PersonImpl 类是否存在singe 方法
  
-  第一步：
+  * 第一步：
     分别将support 0.0.1 与 support 0.0.2 打包 安装  
-  第二步：
+  * 第二步：
     分别将 middleware1 与 middleware2 打包 安装 
-  第三步：
+  * 第三步：
     1. 执行命令 将platform 打包
      javac -encoding UTF-8 -cp ../middleware1/target/middleware-1.0.jar;../middleware2/target/middleware-2.0.jar   -d target  src/main/java/cn/piao888/platform/PlatformApplication.java
     2. cd target
