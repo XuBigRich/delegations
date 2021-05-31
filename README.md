@@ -48,13 +48,13 @@
   第二步：
     分别将 middleware1 与 middleware2 打包 安装 
   第三步：
-    执行命令 将platform 打包
-    javac -encoding UTF-8 -cp ../middleware1/target/middleware-1.0.jar;../middleware2/target/middleware-2.0.jar   -d target  src/main/java/cn/piao888/platform/PlatformApplication.java
-    cd target
-    jar -cvf platform.jar cn
-    添加Main-Class: Main-Class: cn.piao888.platform.PlatformApplication
-    添加resources 下的配置文件application.properties到jar包根目录
-    执行: java -cp platform.jar;../../middleware1/target/middleware-1.0.jar;../../middleware2/target/middleware-2.0.jar cn.piao888.platform.PlatformApplication
+    1. 执行命令 将platform 打包
+     javac -encoding UTF-8 -cp ../middleware1/target/middleware-1.0.jar;../middleware2/target/middleware-2.0.jar   -d target  src/main/java/cn/piao888/platform/PlatformApplication.java
+    2. cd target
+    3. jar -cvf platform.jar cn
+    4. 添加Main-Class: Main-Class: cn.piao888.platform.PlatformApplication
+    5. 添加resources 下的配置文件application.properties到jar包根目录
+    6. 执行: java -cp platform.jar;../../middleware1/target/middleware-1.0.jar;../../middleware2/target/middleware-2.0.jar cn.piao888.platform.PlatformApplication
     * 控制台将打印：
       - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -  
   
