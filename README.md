@@ -55,7 +55,7 @@
     4. 添加Main-Class: Main-Class: cn.piao888.platform.PlatformApplication
     5. 添加resources 下的配置文件application.properties到jar包根目录
     6. 执行: java -cp platform.jar;../../middleware1/target/middleware-1.0.jar;../../middleware2/target/middleware-2.0.jar cn.piao888.platform.PlatformApplication
-    * 控制台将打印：
+    ### 控制台将打印：
       - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -  
   
     *  sun.misc.Launcher$AppClassLoader@4e25154f
