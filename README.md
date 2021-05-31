@@ -58,17 +58,17 @@
     * 控制台将打印：
       - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -  
   
-      sun.misc.Launcher$AppClassLoader@4e25154f
-      [我是运行平台, 我是中间件1, 我是中间件2]
-      cn.piao888.middleware1.classLoader.CustomClassLoader@12a3a380
-      [我是服务支持者，我只通过自定义的类加载器CustomClassLoader加载，所以只有中间件1 与中间件2 的加载器可以加载到我]
-      我是说界巨星
-      [我是运行平台, 我是中间件1, 我是中间件2]
-      cn.piao888.middleware2.classLoader.CustomClassLoader@7440e464
-      [我是服务支持者，我只通过自定义的类加载器CustomClassLoader加载，所以只有中间件1 与中间件2 的加载器可以加载到我]
-      我是说界巨星
-      我是唱界巨星
-      [我是运行平台, 我是中间件1, 我是中间件2]
+    *  sun.misc.Launcher$AppClassLoader@4e25154f
+    *  [我是运行平台, 我是中间件1, 我是中间件2]
+    *  cn.piao888.middleware1.classLoader.CustomClassLoader@12a3a380
+    *  [我是服务支持者，我只通过自定义的类加载器CustomClassLoader加载，所以只有中间件1 与中间件2 的加载器可以加载到我]
+    *  我是说界巨星
+    *  [我是运行平台, 我是中间件1, 我是中间件2]
+    *  cn.piao888.middleware2.classLoader.CustomClassLoader@7440e464
+    *  [我是服务支持者，我只通过自定义的类加载器CustomClassLoader加载，所以只有中间件1 与中间件2 的加载器可以加载到我]
+    *  我是说界巨星
+    *  我是唱界巨星
+    *  [我是运行平台, 我是中间件1, 我是中间件2]
        - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -     - - - - - - -      - - - - - - -     - - - - - - -  
  
    ## 总结
