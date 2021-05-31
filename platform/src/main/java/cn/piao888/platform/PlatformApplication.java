@@ -2,8 +2,6 @@ package cn.piao888.platform;
 
 import cn.piao888.middleware1.Middleware1Application;
 import cn.piao888.middleware2.Middleware2Application;
-import cn.piao888.support.service.Person;
-import cn.piao888.support.service.PersonImpl;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,13 +40,43 @@ import java.util.Properties;
  * 是因为 middleware1 与 middleware2 同时拥有平级的类加载器 然后他们分别将两个不同版本的PersonImpl装载进了jvm中
  */
 public class PlatformApplication {
+	{
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        System.out.println(classLoader);
+    }
 
+   private Properties getProperties(URL url) throws IOException {
+        InputStream inputStream = url.openStream();
+        Properties properties = new Properties();
+        properties.load(new InputStreamReader(inputStream, "utf-8"));
+        return properties;
+    }
+
+    //读取路径下的key
+    private void getProperties() throws IOException {
+        List<String> results = new ArrayList<String>();
+        //使用上下文加载器 加载
+//        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        Enumeration<URL> urls = classLoader.getResources("application.properties");
+        while (urls.hasMoreElements()) {
+            URL url = urls.nextElement();
+            Properties properties = getProperties(url);
+            Object result = properties.get("key");
+            if (result != null) {
+                results.add((String) result);
+            }
+        }
+           System.out.println(results);
+    }
     public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, IOException, InstantiationException, IllegalAccessException {
 
-//        Person person = new PersonImpl();
-//        person.getProperties();
+        PlatformApplication platformApplication = new PlatformApplication();
+      	platformApplication.getProperties();
         Middleware1Application.main(new String[]{"1", "2"});
+        platformApplication.getProperties();
         Middleware2Application.main(new String[]{"1", "2"});
+        platformApplication.getProperties();
     }
 
 }

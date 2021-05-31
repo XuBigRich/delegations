@@ -8,6 +8,11 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
 public class Middleware1Application {
+        {
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        System.out.println(classLoader);
+        }
+
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException, MalformedURLException {
              String jarWholePath = Middleware1Application.class.getProtectionDomain().getCodeSource().getLocation().getFile();
         try {

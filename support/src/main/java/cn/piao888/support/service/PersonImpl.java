@@ -44,8 +44,7 @@ public class PersonImpl implements Person {
     }
 
     //读取路径下的key
-    @Override
-    public void getProperties() throws IOException {
+    private void getProperties() throws IOException {
         List<String> results = new ArrayList<String>();
         //使用上下文加载器 加载
 //        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();

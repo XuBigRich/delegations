@@ -15,5 +15,4 @@ public interface Person {
     //唱
     void singe();
 
-    void getProperties() throws IOException;
 }
